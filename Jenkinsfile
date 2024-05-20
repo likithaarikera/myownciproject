@@ -3,7 +3,7 @@ def COLOR_MAP = [
 	'FAILURE' : 'danger',
 	]
 
-pipeline{
+pipeline {
     agent any
     tools {
         maven "MAVEN3"
@@ -90,17 +90,15 @@ pipeline{
                 )
             }
         }
-        
-    
+      }
 
-
-    post{
-	    always {
-		echo 'slack Notification'
-		slackSend channel: '#cicd',
+      post{
+	     always {
+	 	    echo 'slack Notification'
+		    slackSend channel: '#cicd',
 			color:COLOR_MAP[currentBuil.currentResult],
 			message: "*${currentBuild.currentResult}:*Job $(env.JOB_NAME} buil ${env.BUILD_NUMBER} \n More info at : ${env.BUILD_URL}"
-        }
+}
 }
 }
 
