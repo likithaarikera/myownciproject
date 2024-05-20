@@ -42,7 +42,7 @@ pipeline {
         }  
         stage ('Checkstyle Analysis'){
             steps {
-                sh 'mvn clean install -U -DskipTests -Dmaven.repo.local=~/.m2/repository checkstyle:checkstyle'
+                sh 'mvn clean install -U -DskipTests -.repo.local=~/.m2/repository checkstyle:checkstyle'
             }
         } 
         stage('CODE ANALYSIS with SONARQUBE') {
